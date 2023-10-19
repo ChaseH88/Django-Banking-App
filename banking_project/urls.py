@@ -16,15 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from banking_app import views
+from banking_app.views.create_account import create_account
+from banking_app.views.dashboard import dashboard
+from banking_app.views.signout import signout
+from banking_app.views.login import login
+from banking_app.views.home import home
+from banking_app.views.create_transaction import create_transaction
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('create-account/', views.create_account, name='create_account'),
-    path('dashboard/', views.dashboard, name='dashboard'),
-    path('signout/', views.signout, name='signout'),
-    path('login/', views.login, name='login'),
-    path('', views.home, name='home'),
-    path('create_transaction/', views.create_transaction,
-         name='create_transaction'),
+    path('create-account/', create_account, name='create_account'),
+    path('dashboard/', dashboard, name='dashboard'),
+    path('signout/', signout, name='signout'),
+    path('login/', login, name='login'),
+    path('', home, name='home'),
+    path('create_transaction/', create_transaction, name='create_transaction')
 ]
