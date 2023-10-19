@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import AccountForm, LoginForm
+from .forms import AccountForm, LoginForm, TransactionForm
 from .models import Account
 
 
@@ -53,3 +53,17 @@ def home(request):
         return redirect('dashboard')
     else:
         return redirect('login')
+
+
+def create_transaction(request):
+    if request.method == 'POST':
+        form = TransactionForm(request.POST)
+        if form.is_valid():
+            transaction = form.save(commit=False)
+            transaction.account = Account.objects.get(
+                account_number=request.session['account_number'])
+            transaction.save()
+            return redirect('dashboard')
+    else:
+        form = TransactionForm()
+    return render(request, 'create_transaction.html', {'form': form})

@@ -5,4 +5,5 @@
 <p>Account Number: {{ account.account_number }}</p>
 <p>Account Type: {{ account.get_account_type_display }}</p>
 <p>Balance: ${{ account.balance }}</p>
+<a href="{% url 'create_transaction' %}">Create Transaction</a>
 <a href="{% url 'signout' %}">Sign Out</a>

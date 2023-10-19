@@ -66,7 +66,9 @@ class Transaction(models.Model):
         max_digits=10,
         decimal_places=2
     )
-    date = models.DateField()
+    date = models.DateField(
+        auto_now_add=True
+    )
     account = models.ForeignKey(
         Account,
         on_delete=models.CASCADE,
