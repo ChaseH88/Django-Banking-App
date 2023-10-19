@@ -27,11 +27,6 @@ class Account(models.Model):
         max_length=8, choices=ACCOUNT_TYPES, default=CHECKING
     )
 
-    balance = models.DecimalField(
-        max_digits=10,
-        decimal_places=2,
-        default=0.00
-    )
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
 
@@ -40,7 +35,6 @@ class Account(models.Model):
             'account_number': self.account_number,
             'account_pin': self.account_pin,
             'account_type': self.account_type,
-            'balance': self.balance,
             'first_name': self.first_name,
             'last_name': self.last_name
         }

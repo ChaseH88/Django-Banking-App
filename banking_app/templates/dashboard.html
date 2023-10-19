@@ -4,6 +4,24 @@
 <p>Account Holder: {{ account.first_name }} {{ account.last_name }}</p>
 <p>Account Number: {{ account.account_number }}</p>
 <p>Account Type: {{ account.get_account_type_display }}</p>
-<p>Balance: ${{ account.balance }}</p>
+<h4>Balance: <strong>${{ balance }}</strong></h4>
+
+
+<h2>
+    {% if transactions %}
+        <p>
+            {% for transaction in transactions %}
+                {% if transaction.transaction_type == 'deposit' %}
+                    <span style="color: green;">{{ transaction.transaction_type }}: ${{ transaction.amount }}</span><br>
+                {% else %}
+                    <span style="color: red;">{{ transaction.transaction_type }}: (${{ transaction.amount }})</span><br>
+                {% endif %}
+            {% endfor %}
+        </p>
+    {% else %}
+        No Transactions
+    {% endif %}
+</h2>
+
 <a href="{% url 'create_transaction' %}">Create Transaction</a>
 <a href="{% url 'signout' %}">Sign Out</a>
