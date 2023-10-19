@@ -20,5 +20,6 @@ from banking_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('create-account/', views.create_account, name='create_account')
+    path('create-account/', views.create_account, name='create_account'),
+    path('dashboard/', views.dashboard, name='dashboard')
 ]

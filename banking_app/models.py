@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator
+from django.contrib.auth.models import User
 import random
 
 
@@ -13,7 +14,6 @@ class Account(models.Model):
         (SAVINGS, 'Savings'),
     ]
 
-    # this needs to be random numbers of 8 digits
     account_number = models.PositiveIntegerField(
         unique=True,
         validators=[MaxValueValidator(
@@ -27,7 +27,7 @@ class Account(models.Model):
     account_type = models.CharField(
         max_length=8, choices=ACCOUNT_TYPES, default=CHECKING
     )
-    # balance should start as 0 but still be a decimal
+
     balance = models.DecimalField(
         max_digits=10,
         decimal_places=2,
@@ -37,7 +37,14 @@ class Account(models.Model):
     last_name = models.CharField(max_length=50)
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name} - {self.account_number}"
+        return {
+            'account_number': self.account_number,
+            'account_pin': self.account_pin,
+            'account_type': self.account_type,
+            'balance': self.balance,
+            'first_name': self.first_name,
+            'last_name': self.last_name
+        }
 
 
 class Transaction(models.Model):
