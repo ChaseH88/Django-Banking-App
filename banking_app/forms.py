@@ -11,3 +11,8 @@ class AccountForm(forms.ModelForm):
             'account_type',
             'account_pin'
         ]
+
+
+class LoginForm(forms.Form):
+    account_number = forms.IntegerField()
+    account_pin = forms.IntegerField()
