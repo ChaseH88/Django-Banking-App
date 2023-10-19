@@ -1,17 +1,5 @@
 from django import forms
-from .models import Account, Transaction
-from django.core.validators import MaxValueValidator
-
-
-class AccountForm(forms.ModelForm):
-    class Meta:
-        model = Account
-        fields = [
-            'first_name',
-            'last_name',
-            'account_type',
-            'account_pin'
-        ]
+from banking_app.models import Account
 
 
 class LoginForm(forms.Form):
@@ -39,12 +27,3 @@ class LoginForm(forms.Form):
         # handle incorrect PIN
         if account and account.account_pin != account_pin:
             raise forms.ValidationError("Invalid account PIN.")
-
-
-class TransactionForm(forms.ModelForm):
-    class Meta:
-        model = Transaction
-        fields = [
-            'transaction_type',
-            'amount'
-        ]

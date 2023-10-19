@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
-from .forms import AccountForm, LoginForm, TransactionForm
-from .models import Account
+from banking_app.models import Account
+
+# Forms
+from banking_app.forms.account import AccountForm
+from banking_app.forms.login import LoginForm
+from banking_app.forms.transaction import TransactionForm
 
 
 def create_account(request):
