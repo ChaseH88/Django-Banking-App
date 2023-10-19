@@ -6,3 +6,10 @@ This is a simple banking application that allows users to create accounts, depos
 ```
 pip install django
 ```
+
+## Usage
+
+Running the application:
+```
+python3 manage.py runserver
+```
