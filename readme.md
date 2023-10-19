@@ -13,3 +13,8 @@ Running the application:
 ```
 python3 manage.py runserver
 ```
+
+Updating the database:
+```
+python3 manage.py migrate
+```
