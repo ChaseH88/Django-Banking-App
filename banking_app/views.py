@@ -21,3 +21,8 @@ def dashboard(request):
         account_number=request.session['account_number']
     )
     return render(request, 'dashboard.html', {'account': foundAccount})
+
+
+def signout(request):
+    request.session.flush()
+    return redirect('create_account')
