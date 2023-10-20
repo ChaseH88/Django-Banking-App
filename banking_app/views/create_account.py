@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from banking_app.forms.account import AccountForm
+from banking_app.utils.account import is_logged_in
 
 
 def create_account(request):
-    if 'account_number' in request.session:
+    if is_logged_in(request):
         return redirect('dashboard')
 
     if request.method == 'POST':

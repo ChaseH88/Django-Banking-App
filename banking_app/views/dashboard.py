@@ -1,12 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from banking_app.models.transaction import Transaction
 from banking_app.models.account import Account
+from banking_app.utils.account import is_logged_in, get_account
 
 
 def dashboard(request):
-    foundAccount = Account.objects.get(
-        account_number=request.session['account_number']
-    )
+
+    if not is_logged_in(request):
+        return redirect('login')
+
+    foundAccount = get_account(request)
 
     foundTransactions = Transaction.objects.filter(
         account__account_number=foundAccount.account_number
@@ -27,6 +30,6 @@ def dashboard(request):
             'account': foundAccount,
             'transactions': foundTransactions,
             'balance': balance,
-            'logged_in': 'account_number' in request.session
+            'logged_in': is_logged_in(request)
         }
     )
