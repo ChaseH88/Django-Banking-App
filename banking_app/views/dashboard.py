@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from banking_app.models.transaction import Transaction
-from banking_app.models.account import Account
 from banking_app.utils.account import is_logged_in, get_account
 
 
