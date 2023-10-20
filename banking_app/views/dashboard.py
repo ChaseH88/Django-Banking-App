@@ -29,6 +29,8 @@ def dashboard(request):
             'account': foundAccount,
             'transactions': foundTransactions,
             'balance': balance,
-            'logged_in': is_logged_in(request)
+            'logged_in': is_logged_in(request),
+            'welcome_message': 'Hello ' + foundAccount.first_name.capitalize() + ' ' + foundAccount.last_name.capitalize() + ', welcome to your dashboard!',
+            'customer_since': 'Customer since ' + foundAccount.date.strftime('%B %Y')
         }
     )

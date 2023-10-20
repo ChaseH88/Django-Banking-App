@@ -1,28 +1,111 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Dashboard</h2>
-<p>Account Holder: {{ account.first_name }} {{ account.last_name }}</p>
-<p>Account Number: {{ account.account_number }}</p>
-<p>Account Type: {{ account.get_account_type_display }}</p>
-<h4>Balance: <strong>${{ balance }}</strong></h4>
 
+<style>
+    h6 {
+        margin: 0
+    }
 
-<h2>
+    .dashboard-container {
+        min-width: none;
+        margin: auto;
+        font-family: Arial, sans-serif;
+        padding: 3em;
+        display: flex;
+        justify-content: center;
+        gap: 2em;
+    }
+
+    .wrapper {
+        padding: 0 3em;
+    }
+
+    .dashboard-header {
+        background-color: #f1f1f1;
+        padding: .5em;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .account-info {
+        background-color: #f9f9f9;
+        padding: 1em 2em;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    .balance {
+        background-color: #e6ffe6;
+        padding: 1em 2em;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    .transactions {
+        background-color: #f1f1f1;
+        padding: 1em 3em;
+        border-radius: 5px;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+    }
+
+    .transaction-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .transaction-item {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0;
+        padding: 15px;
+        background-color: #fff;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+</style>
+
+<div class="dashboard-container">
+    <div class="wrapper">
+        <div class="dashboard-header">
+            <h2>Dashboard</h2>
+        </div>
+        <div class="account-info">
+            <h4>
+                {{ welcome_message }}
+            </h4>
+            <h5>Account Number: {{ account.account_number }}</h5>
+            <h5>Account Type: {{ account.get_account_type_display }}</h5>
+
+            <h6>
+                {{ customer_since }}
+            </h6>
+        </div>
+        <div class="balance">
+            <h4>Balance: <strong>${{ balance }}</strong></h4>
+        </div>
+    </div>
     {% if transactions %}
-    <p>
-        {% for transaction in transactions %}
-        <span>Date: {{ transaction.date }}</span><br>
-        {% if transaction.transaction_type == 'deposit' %}
-        <span style="color: green;">{{ transaction.transaction_type }}: ${{ transaction.amount }}</span><br>
-        {% else %}
-        <span style="color: red;">{{ transaction.transaction_type }}: (${{ transaction.amount }})</span><br>
-        {% endif %}
-        {% endfor %}
-    </p>
-    {% else %}
-    No Transactions
+    <div class="transactions">
+        <h2>Recent Transactions</h2>
+        <h5>
+            <ul class="transaction-list">
+                {% for transaction in transactions %}
+                <li class="transaction-item">
+                    <span>{{ transaction.date }}</span>
+                    {% if transaction.transaction_type == 'deposit' %}
+                    <span style="color: green;">{{ transaction.transaction_type }}: ${{ transaction.amount }}</span>
+                    {% else %}
+                    <span style="color: red;">{{ transaction.transaction_type }}: (${{ transaction.amount }})</span>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </h5>
+    </div>
     {% endif %}
-</h2>
+</div>
 
 {% endblock %}
