@@ -14,9 +14,14 @@ Running the application:
 python3 manage.py runserver
 ```
 
+Create Tables:
+```
+python3 manage.py makemigrations banking_app
+```
+
 Updating the database:
 
 Any time you make changes to the models, you will need to run the following commands to update the database:
 ```
-python3 manage.py makemigrations && python3 manage.py migrate
+python3 manage.py makemigrations && python3 manage.py migrate 
 ```

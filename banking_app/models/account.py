@@ -30,11 +30,16 @@ class Account(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
 
+    date = models.DateField(
+        auto_now_add=True
+    )
+
     def __str__(self):
         return {
             'account_number': self.account_number,
             'account_pin': self.account_pin,
             'account_type': self.account_type,
             'first_name': self.first_name,
-            'last_name': self.last_name
+            'last_name': self.last_name,
+            'date': self.date,
         }

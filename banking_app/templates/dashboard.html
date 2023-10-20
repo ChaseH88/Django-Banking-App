@@ -12,6 +12,7 @@
     {% if transactions %}
     <p>
         {% for transaction in transactions %}
+        <span>Date: {{ transaction.date }}</span><br>
         {% if transaction.transaction_type == 'deposit' %}
         <span style="color: green;">{{ transaction.transaction_type }}: ${{ transaction.amount }}</span><br>
         {% else %}
