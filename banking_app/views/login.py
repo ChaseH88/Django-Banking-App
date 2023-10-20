@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from banking_app.models import Account
+from banking_app.models.account import Account
 from banking_app.forms.login import LoginForm
 
 

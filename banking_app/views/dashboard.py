@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from banking_app.models import Account, Transaction
+from banking_app.models.transaction import Transaction
+from banking_app.models.account import Account
 
 
 def dashboard(request):

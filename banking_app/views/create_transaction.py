@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from banking_app.models import Account, Transaction
+from banking_app.models.transaction import Transaction
+from banking_app.models.account import Account
 from banking_app.forms.transaction import TransactionForm
 
 

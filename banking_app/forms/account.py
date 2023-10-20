@@ -1,5 +1,5 @@
 from django import forms
-from banking_app.models import Account
+from banking_app.models.account import Account
 
 
 class AccountForm(forms.ModelForm):

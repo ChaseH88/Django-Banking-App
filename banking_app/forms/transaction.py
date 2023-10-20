@@ -1,5 +1,5 @@
 from django import forms
-from banking_app.models import Transaction
+from banking_app.models.transaction import Transaction
 
 
 class TransactionForm(forms.ModelForm):
