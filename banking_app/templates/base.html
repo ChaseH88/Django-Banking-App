@@ -7,6 +7,10 @@
 </head>
 
 <style>
+	* {
+		box-sizing: border-box;
+	}
+
 	body {
 		margin: 0;
 		padding: 0;
@@ -50,6 +54,68 @@
 	header li a:hover {
 		text-decoration: underline;
 	}
+
+	header .logo a {
+		color: #fff;
+		text-decoration: none;
+		font-size: 1.5em;
+	}
+
+	header .logo a:hover {
+		text-decoration: underline;
+	}
+
+	main .container {
+		padding: 5em 0 3em;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	button,
+	input[type="submit"] {
+		all: unset;
+		background-color: #333;
+		color: #fff;
+		padding: 0.5em 3em;
+		border-radius: 5px;
+		cursor: pointer;
+		transition: background-color 0.2s ease-in-out;
+		margin: 1em;
+	}
+
+	button:hover,
+	input[type="submit"]:hover {
+		background-color: #444;
+	}
+
+	form {
+		width: 100vw;
+		max-width: 500px;
+		min-width: 300px;
+		background-color: #eee;
+		padding: 1em;
+		display: inline-flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	form p {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex: 1 1 100%;
+	}
+
+	form p label {
+		margin-right: 1em;
+		flex: 1 1 200px;
+	}
+
+	form p input {
+		flex: 1 1 auto;
+		width: 100%;
+	}
 </style>
 
 
@@ -59,7 +125,7 @@
 			<div class="wrapper">
 				<div class="logo">
 					<span>
-						Banking App
+						<a href="{% url 'home' %}">Banking App</a>
 					</span>
 				</div>
 				<div class="" id="nav">
@@ -91,8 +157,12 @@
 	</header>
 
 	<main>
-		{% block content %}
-		{% endblock %}
+		<div class="container">
+			<div class="wrapper">
+				{% block content %}
+				{% endblock %}
+			</div>
+		</div>
 	</main>
 
 	<footer>
