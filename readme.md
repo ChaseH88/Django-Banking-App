@@ -4,7 +4,7 @@ This is a simple banking application that allows users to create accounts, depos
 
 ## Installation
 ```
-pip install django
+pip install django 
 ```
 
 ## Usage
@@ -15,6 +15,8 @@ python3 manage.py runserver
 ```
 
 Updating the database:
+
+Any time you make changes to the models, you will need to run the following commands to update the database:
 ```
-python3 manage.py migrate
+python3 manage.py makemigrations && python3 manage.py migrate
 ```
