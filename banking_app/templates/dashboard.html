@@ -54,6 +54,8 @@
         list-style: none;
         padding: 0;
         margin: 0;
+        max-height: 230px;
+        overflow: hidden scroll;
     }
 
     .transaction-item {
@@ -84,7 +86,7 @@
             </h6>
         </div>
         <div class="balance">
-            <h4>Balance: <strong>${{ balance }}</strong></h4>
+            <h4>Balance: <strong>{{ balance }}</strong></h4>
         </div>
     </div>
     {% if transactions %}
