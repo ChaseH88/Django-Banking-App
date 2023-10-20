@@ -1,4 +1,6 @@
-{% load static %}
+{% extends 'base.html' %}
+
+{% block content %}
 
 <form method="post">
     {% csrf_token %}
@@ -6,4 +8,4 @@
     <input type="submit" value="Login">
 </form>
 
-<a href="{% url 'create_account' %}">Create Account</a>
+{% endblock %}

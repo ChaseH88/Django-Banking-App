@@ -46,5 +46,6 @@ def create_transaction(request):
         {
             'form': form,
             'account': foundAccount,
+            'logged_in': 'account_number' in request.session,
         }
     )

@@ -4,6 +4,10 @@ from banking_app.forms.login import LoginForm
 
 
 def login(request):
+
+    if 'account_number' in request.session:
+        return redirect('dashboard')
+
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():

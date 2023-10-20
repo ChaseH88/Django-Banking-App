@@ -25,6 +25,7 @@ def dashboard(request):
         {
             'account': foundAccount,
             'transactions': foundTransactions,
-            'balance': balance
+            'balance': balance,
+            'logged_in': 'account_number' in request.session
         }
     )

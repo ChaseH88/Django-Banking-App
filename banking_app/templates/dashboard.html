@@ -1,5 +1,6 @@
-{% load static %}
+{% extends 'base.html' %}
 
+{% block content %}
 <h2>Dashboard</h2>
 <p>Account Holder: {{ account.first_name }} {{ account.last_name }}</p>
 <p>Account Number: {{ account.account_number }}</p>
@@ -9,19 +10,18 @@
 
 <h2>
     {% if transactions %}
-        <p>
-            {% for transaction in transactions %}
-                {% if transaction.transaction_type == 'deposit' %}
-                    <span style="color: green;">{{ transaction.transaction_type }}: ${{ transaction.amount }}</span><br>
-                {% else %}
-                    <span style="color: red;">{{ transaction.transaction_type }}: (${{ transaction.amount }})</span><br>
-                {% endif %}
-            {% endfor %}
-        </p>
+    <p>
+        {% for transaction in transactions %}
+        {% if transaction.transaction_type == 'deposit' %}
+        <span style="color: green;">{{ transaction.transaction_type }}: ${{ transaction.amount }}</span><br>
+        {% else %}
+        <span style="color: red;">{{ transaction.transaction_type }}: (${{ transaction.amount }})</span><br>
+        {% endif %}
+        {% endfor %}
+    </p>
     {% else %}
-        No Transactions
+    No Transactions
     {% endif %}
 </h2>
 
-<a href="{% url 'create_transaction' %}">Create Transaction</a>
-<a href="{% url 'signout' %}">Sign Out</a>
+{% endblock %}

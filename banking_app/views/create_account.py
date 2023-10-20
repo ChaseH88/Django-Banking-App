@@ -3,6 +3,9 @@ from banking_app.forms.account import AccountForm
 
 
 def create_account(request):
+    if 'account_number' in request.session:
+        return redirect('dashboard')
+
     if request.method == 'POST':
         form = AccountForm(request.POST)
         if form.is_valid():

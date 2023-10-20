@@ -1,13 +1,15 @@
-{% load static %}
+{% extends "base.html" %}
+
+{% block content %}
 
 <h2>Create Transaction</h2>
 <form method="post">
     {% csrf_token %}
     {% if error %}
-        <p style="color: red;">{{ error }}</p>
+    <p style="color: red;">{{ error }}</p>
     {% endif %}
     {{ form.as_p }}
     <button type="submit">Create</button>
 </form>
 
-<a href="{% url 'dashboard' %}">Dashboard</a>
+{% endblock %}
